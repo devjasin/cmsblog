@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar and Cards</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: #333;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar ul li {
+            display: inline;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 15px;
+            transition: background 0.3s ease;
+        }
+
+        .navbar ul li a:hover {
+            background-color: #575757;
+            border-radius: 5px;
+        }
+
+        /* Cards Container */
+        .card-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
+
+        /* Card Styling */
+        .card {
+            background-color: white;
+            width: 300px;
+            margin: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .card-header h2 {
+            margin-bottom: 5px;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-content p {
+            margin: 10px 0;
+        }
+
+        /* Responsive for smaller screens */
+        @media screen and (max-width: 768px) {
+            .navbar ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .card-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+      <%-include("./navbar.ejs")%>
+
+    <!-- Cards -->
+    <div class="card-container">
+        <!-- Card 1 -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Card Title 1</h2>
+                <h4>Subtitle 1</h4>
+            </div>
+            <div class="card-content">
+                <p>Description of the first card. This is where the main content goes for the card description.</p>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Card Title 2</h2>
+                <h4>Subtitle 2</h4>
+            </div>
+            <div class="card-content">
+                <p>Description of the second card. Add some interesting information or text here to describe this card.</p>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Card Title 3</h2>
+                <h4>Subtitle 3</h4>
+            </div>
+            <div class="card-content">
+                <p>Description of the third card. You can place any descriptive text you want in this section.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
