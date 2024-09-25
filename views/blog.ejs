@@ -116,40 +116,32 @@
     <!-- Navbar -->
       <%-include("./navbar.ejs")%>
 
-    <!-- Cards -->
+    <!-- <div class="card-container">
+      <% blogs.length > 0 && blogs.forEach((data)=>{ %>
+        <div class="card">
+            <div class="card-header">
+                <h2><%-data.title %></h2>
+                <h4><%-data.subTitle%></h4>
+            </div>
+            <div class="card-content">
+                <p><%-data.description%></p>
+            </div>
+        </div>
+
+      <% }) %>       
+    </div> -->
     <div class="card-container">
-        <!-- Card 1 -->
-        <div class="card">
-            <div class="card-header">
-                <h2>Card Title 1</h2>
-                <h4>Subtitle 1</h4>
-            </div>
-            <div class="card-content">
-                <p>Description of the first card. This is where the main content goes for the card description.</p>
-            </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="card">
-            <div class="card-header">
-                <h2>Card Title 2</h2>
-                <h4>Subtitle 2</h4>
-            </div>
-            <div class="card-content">
-                <p>Description of the second card. Add some interesting information or text here to describe this card.</p>
-            </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="card">
-            <div class="card-header">
-                <h2>Card Title 3</h2>
-                <h4>Subtitle 3</h4>
-            </div>
-            <div class="card-content">
-                <p>Description of the third card. You can place any descriptive text you want in this section.</p>
-            </div>
-        </div>
+        <% blogs.length > 0 && blogs.map((data)=>{ %>
+            <div class="card">
+                <div class="card-header">
+                    <h2><%-data.title %></h2>
+                    <h4><%-data.subTitle%></h4>
+                </div>
+                <div class="card-content">
+                    <p><%-data.description%></p>
+                </div>
+            </div> 
+       <% }) %>
     </div>
 
 </body>
