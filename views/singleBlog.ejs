@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .post-container {
+            max-width: 1400px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .post-header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .post-header h3 {
+            margin-top: 10px;
+            font-size: 20px;
+            font-weight: normal;
+        }
+
+        .post-content {
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        a{
+            text-decoration: none;
+            color:black;
+            float: right;
+        }
+
+        /* Responsive for smaller screens */
+        @media screen and (max-width: 768px) {
+            .post-container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Post Content -->
+    <div class="post-container">
+        <div class="post-header">
+            <h1><%-sdata[0].title%></h1>
+            <h3><%-sdata[0].subTitle%></h3>
+            <h4><%-sdata[0].createdAt.toISOString().slice(0,10)%></h4>
+        </div>
+        <div class="post-content">
+                <p>
+                  <%-sdata[0].description%>
+                </p>        
+              </div>
+        <a href="/" class="back-link">← Back to Posts</a>
+        <button><a href="/delete/<%-sdata[0].id%>">Delete</a></button>
+    </div>
+</body>
+</html>

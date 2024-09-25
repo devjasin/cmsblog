@@ -1,5 +1,6 @@
 import { Router } from "express";
 import db from "../model/index.js";
+import { where } from "sequelize";
 
 const firstrouter = Router();
 firstrouter.route("/").get(async (req, res) => {
@@ -22,5 +23,29 @@ firstrouter
     });
     res.redirect("/");
   });
+
+firstrouter.route("/singlePost/:id").get(async (req, res) => {
+  let id = req.params.id;
+  const aaide = await db.blogs.findAll({
+    where: {
+      id: id,
+    },
+  });
+  //alternative method
+  // const db.blog=await db.blogs.findByPk(id)
+  // res.json(aaide);
+
+  res.render("singleBlog", { sdata: aaide });
+});
+//delete page
+firstrouter.route("/delete/:id").get(async (req, res) => {
+  let id = req.params.id;
+  await db.blogs.destroy({
+    where: {
+      id: id,
+    },
+  });
+  res.redirect("/");
+});
 
 export default firstrouter;
