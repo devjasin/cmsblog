@@ -64,11 +64,48 @@
                 padding: 10px;
             }
         }
+        .navbar {
+            background-color: #333;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar ul li {
+            display: inline;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 15px;
+            transition: background 0.3s ease;
+        }
+
+        .navbar ul li a:hover {
+            background-color: #575757;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Post Content -->
+  <%-include("./components/navbar.ejs")%>
     <div class="post-container">
         <div class="post-header">
             <h1><%-sdata[0].title%></h1>
@@ -81,7 +118,18 @@
                 </p>        
               </div>
         <a href="/" class="back-link">← Back to Posts</a>
-        <button><a href="/delete/<%-sdata[0].id%>">Delete</a></button>
+        
+        <form action="/delete/<%- sdata[0].id %>" method="POST" style="display:inline;">
+            <button type="submit">Delete</button>
+          </form>
+          
+         <form action="/edit/<%-sdata[0].id %>" method="post" style="display: inline;">
+        <button>UPDATE</button> 
+        
+        </form>
+
+          
+
     </div>
 </body>
 </html>

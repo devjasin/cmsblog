@@ -38,7 +38,7 @@ firstrouter.route("/singlePost/:id").get(async (req, res) => {
   res.render("singleBlog", { sdata: aaide });
 });
 //delete page
-firstrouter.route("/delete/:id").get(async (req, res) => {
+firstrouter.route("/delete/:id").post(async (req, res) => {
   let id = req.params.id;
   await db.blogs.destroy({
     where: {
@@ -46,6 +46,31 @@ firstrouter.route("/delete/:id").get(async (req, res) => {
     },
   });
   res.redirect("/");
+});
+//EDIT
+firstrouter.route("/edit/:id").post(async (req, res) => {
+  const id = req.params.id;
+  //find blog of that id
+  const data = await db.blogs.findAll({ where: { id: id } });
+  //this will fill the data
+  res.render("editBlog", { data: data });
+});
+firstrouter.route("/editBlog1/:id").post(async (req, res) => {
+  let id = req.params.id;
+  const { title, subtitle, description } = req.body;
+  await db.blogs.update(
+    {
+      title: title,
+      subTitle: subtitle,
+      description: description,
+    },
+    {
+      where: {
+        id: id,
+      },
+    }
+  );
+  res.redirect("/singlePost/" + id);
 });
 
 export default firstrouter;

@@ -71,6 +71,7 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: 0.3s;
+            word-wrap: break-word;
         }
 
         .card:hover {
@@ -114,7 +115,7 @@
 <body>
 
     <!-- Navbar -->
-      <%-include("./navbar.ejs")%>
+      <%-include("./components/navbar.ejs")%>
 
     <!-- <div class="card-container">
       <% blogs.length > 0 && blogs.forEach((data)=>{ %>
