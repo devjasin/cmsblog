@@ -11,14 +11,13 @@
     acquire: 30000,
     idle: 10000,
   },
-};
- */
+}; */
 
 export default {
-  HOST: "localhost",
+  HOST: "mysql.railway.internal",
   USER: "root",
-  PASSWORD: "",
-  DB: "blogcms",
+  PASSWORD: "tkwLLDqwVuhtPTUumuXcLwkNjURMXQGq",
+  DB: "railway",
   dialect: "mysql",
   pool: {
     max: 5,
