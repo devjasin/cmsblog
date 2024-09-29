@@ -6,6 +6,7 @@ const firstrouter = Router();
 firstrouter.route("/").get(async (req, res) => {
   //database bata vayejati sabai data nikalna
   const allBlogs = await db.blogs.findAll();
+  // res.json(allBlogs);
   res.render("blog", { blogs: allBlogs }); //passing value for blog.ejs with name blogs j rakhda pani hunxa name
 });
 firstrouter
