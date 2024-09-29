@@ -1,12 +1,13 @@
 import { Sequelize, DataTypes } from "sequelize";
 import dbConfig from "../config/dbConfig.js";
 import blogModel from "./blogModel.js";
-import user from "./user.js";
 
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
   dialect: dbConfig.dialect,
   operatorsAliases: false,
+  //for railway
+  port: 3306,
 
   pool: {
     max: dbConfig.pool.max,

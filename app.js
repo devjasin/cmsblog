@@ -1,6 +1,6 @@
 import express from "express";
 import firstrouter from "./router/1strouter.js";
-// import db from "./model/index.js";
+import db from "./model/index.js";
 
 const app = express();
 app.listen(3000, () => {
