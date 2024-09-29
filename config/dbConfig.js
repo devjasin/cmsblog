@@ -16,7 +16,7 @@
 export default {
   HOST: "mysql.railway.internal",
   USER: "root",
-  PASSWORD: "tkwLLDqwVuhtPTUumuXcLwkNjURMXQGq",
+  PASSWORD: "CbFUyXkEFLfUWQBUvvyWsmTeByLPOscE",
   DB: "railway",
   dialect: "mysql",
   pool: {
