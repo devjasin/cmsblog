@@ -4,104 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        .post-container {
-            max-width: 1400px;
-            margin: 40px auto;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .post-header {
-            background-color: #333;
-            color: white;
-            padding: 20px;
-            border-radius: 8px 8px 0 0;
-        }
-
-        .post-header h1 {
-            margin: 0;
-            font-size: 28px;
-        }
-
-        .post-header h3 {
-            margin-top: 10px;
-            font-size: 20px;
-            font-weight: normal;
-        }
-
-        .post-content {
-            padding: 20px;
-            line-height: 1.6;
-        }
-
-        .back-link {
-            display: block;
-            margin-top: 20px;
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-        }
-        a{
-            text-decoration: none;
-            color:black;
-            float: right;
-        }
-
-        /* Responsive for smaller screens */
-        @media screen and (max-width: 768px) {
-            .post-container {
-                padding: 10px;
-            }
-        }
-        .navbar {
-            background-color: #333;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .navbar .logo {
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        .navbar ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        .navbar ul li {
-            display: inline;
-        }
-
-        .navbar ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            padding: 10px 15px;
-            transition: background 0.3s ease;
-        }
-
-        .navbar ul li a:hover {
-            background-color: #575757;
-            border-radius: 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/singleBlog.css">
 </head>
 <body>
 
@@ -124,8 +27,7 @@
           </form>
           
          <form action="/edit/<%-sdata[0].id %>" method="post" style="display: inline;">
-        <button>UPDATE</button> 
-        
+        <button>UPDATE</button>  
         </form>
 
           

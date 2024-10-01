@@ -1,5 +1,5 @@
 //for local
-/* export default {
+export default {
   HOST: "localhost",
   USER: "root",
   PASSWORD: "",
@@ -11,9 +11,9 @@
     acquire: 30000,
     idle: 10000,
   },
-}; */
+};
 
-export default {
+/* export default {
   HOST: "mysql.railway.internal",
   USER: "root",
   PASSWORD: "CbFUyXkEFLfUWQBUvvyWsmTeByLPOscE",
@@ -26,3 +26,4 @@ export default {
     idle: 10000,
   },
 };
+ */
