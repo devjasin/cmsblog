@@ -2,7 +2,7 @@ import { Router } from "express";
 import {
   RegisterUser,
   renderRegisterUser,
-} from "../controller/blog/userControl.js";
+} from "../controller/user/userControl.js";
 
 const register = Router();
 register.route("/").get(renderRegisterUser).post(RegisterUser);

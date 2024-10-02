@@ -32,6 +32,12 @@ const db = {};
 db.blogs = blogModel(sequelize, DataTypes);
 db.users = userModel(sequelize, DataTypes);
 // db.users = user(sequelize, DataTypes);// db.user stand for databsae = user vaneko model vitra ko file name
+
+//RELATIONSHIP OF TWO TABLE
+//THIS LINE WILL CREATE userId in BLOG
+db.users.hasMany(db.blogs);
+db.blogs.belongsTo(db.users);
+
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.sequelize.sync({ force: false }).then(() => {
