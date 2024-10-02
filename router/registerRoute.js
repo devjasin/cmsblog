@@ -1,12 +1,10 @@
 import { Router } from "express";
-import { renderRegisterUser } from "../controller/blog/userControl.js";
+import {
+  RegisterUser,
+  renderRegisterUser,
+} from "../controller/blog/userControl.js";
 
 const register = Router();
-register
-  .route("/")
-  .get(renderRegisterUser)
-  .post((req, res, next) => {
-    res.send("success");
-  });
+register.route("/").get(renderRegisterUser).post(RegisterUser);
 
 export default register;

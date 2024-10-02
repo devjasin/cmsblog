@@ -2,6 +2,7 @@ import { Sequelize, DataTypes } from "sequelize";
 
 import blogModel from "./blogModel.js";
 import dbConfig from "../controller/dbconfig/dbConfig.js";
+import userModel from "./userModel.js";
 
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
@@ -29,6 +30,7 @@ sequelize
 
 const db = {};
 db.blogs = blogModel(sequelize, DataTypes);
+db.users = userModel(sequelize, DataTypes);
 // db.users = user(sequelize, DataTypes);// db.user stand for databsae = user vaneko model vitra ko file name
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
