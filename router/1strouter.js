@@ -10,12 +10,16 @@ import {
   renderEditBlog,
   renderSinglePost,
 } from "../controller/blog/blogController.js";
+import isAuthenticated from "../middleware/isAuthenticated.js";
 
 const firstrouter = Router();
 //display all blog in page
 firstrouter.route("/").get(renderAllBlogs);
 //create blog
-firstrouter.route("/createblog").get(renderCreateBlog).post(createBlog);
+firstrouter
+  .route("/createblog")
+  .get(renderCreateBlog)
+  .post(isAuthenticated, createBlog);
 //find and display
 firstrouter.route("/singlePost/:id").get(renderSinglePost);
 //delete page

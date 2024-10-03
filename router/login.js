@@ -26,7 +26,8 @@ loginRouter.route("/").post(async (req, res, next) => {
           expiresIn: "30d",
         });
         res.cookie("token", token);
-        res.send("login successful");
+        // res.send("login successful");
+        res.redirect("/");
       } else {
         res.send("invalid email or password");
       }
@@ -35,5 +36,4 @@ loginRouter.route("/").post(async (req, res, next) => {
     }
   }
 });
-console.log("JSKFHDSKAHJ");
 export default loginRouter;

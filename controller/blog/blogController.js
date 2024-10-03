@@ -5,12 +5,14 @@ const renderCreateBlog = (req, res) => {
 };
 
 const createBlog = async (req, res) => {
-  console.log(req.body);
+  console.log(req.user[0].id, "userId from createBlog"); //req.user.id isAuthentication bata pathayeko huxna
+  const userId = req.user[0].id;
   const { title, subtitle, description } = req.body;
   await db.blogs.create({
     title: title,
     subTitle: subtitle,
     description: description,
+    userId: userId,
   });
   res.redirect("/");
 };
