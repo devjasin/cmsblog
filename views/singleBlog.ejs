@@ -13,6 +13,7 @@
         <div class="post-header">
             <h1><%-sdata[0].title%></h1>
             <h3><%-sdata[0].subTitle%></h3>
+            <h3>Writer Name : <%-sdata[0].user.user%></h3>
             <h4><%-sdata[0].createdAt.toISOString().slice(0,10)%></h4>
         </div>
         <div class="post-content">

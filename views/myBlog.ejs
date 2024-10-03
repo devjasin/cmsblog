@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar and Cards</title>
+  <link rel="stylesheet" href="/css/blog.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+      <%-include("./components/navbar.ejs")%>
+      <h1>MyBlogs</h1>
+      <div class="card-container"></div>
+        <% blogs.length > 0 && blogs.map((data)=>{ %>
+            <div class="card">
+                <div class="card-header">
+                    <h2><%-data.title %></h2>
+                    <h4><%-data.subTitle%></h4>
+                </div>
+                <div class="card-content">
+                    <p><%-data.description%></p>
+                    <a href="/singlePost/<%-data.id%>">Read More →</a>
+                </div>
+            </div> 
+       <% }) %>
+   
+</body>
+</html>

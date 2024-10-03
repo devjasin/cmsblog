@@ -5,6 +5,7 @@ import {
   createBlog,
   deleteBlog,
   editBlog,
+  Myblog,
   renderAllBlogs,
   renderCreateBlog,
   renderEditBlog,
@@ -23,9 +24,10 @@ firstrouter
 //find and display
 firstrouter.route("/singlePost/:id").get(renderSinglePost);
 //delete page
-firstrouter.route("/delete/:id").post(deleteBlog);
+firstrouter.route("/delete/:id").post(isAuthenticated, deleteBlog);
 //EDIT
-firstrouter.route("/edit/:id").post(renderEditBlog);
-firstrouter.route("/editBlog1/:id").post(editBlog);
+firstrouter.route("/edit/:id").post(isAuthenticated, renderEditBlog);
+firstrouter.route("/editBlog1/:id").post(isAuthenticated, editBlog);
+firstrouter.route("/myblogs").get(isAuthenticated, Myblog);
 
 export default firstrouter;

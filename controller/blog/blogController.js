@@ -30,6 +30,7 @@ const renderSinglePost = async (req, res) => {
     where: {
       id: id,
     },
+    include: { model: db.users },
   });
   //alternative method
   // const db.blog=await db.blogs.findByPk(id)
@@ -74,6 +75,16 @@ const editBlog = async (req, res) => {
   res.redirect("/singlePost/" + id);
 };
 
+const Myblog = async (req, res) => {
+  //get this user blogs
+  const id = await req.user[0].id;
+  const userBlogOnly = await db.blogs.findAll({
+    where: { userId: id },
+  });
+  // res.json(userBlogOnly);
+  res.render("myBlog.ejs", { blogs: userBlogOnly });
+};
+
 export {
   renderCreateBlog,
   createBlog,
@@ -82,4 +93,5 @@ export {
   deleteBlog,
   renderEditBlog,
   editBlog,
+  Myblog,
 };
