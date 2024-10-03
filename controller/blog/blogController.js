@@ -18,8 +18,10 @@ const createBlog = async (req, res) => {
 };
 
 const renderAllBlogs = async (req, res) => {
-  const allBlogs = await db.blogs.findAll();
-  res.render("blog", { blogs: allBlogs }); //passing value for blog.ejs with name blogs j rakhda pani hunxa name
+  const allBlogs = await db.blogs.findAll({
+    include: { model: db.users },
+  });
+  await res.render("blog", { blogs: allBlogs }); //passing value for blog.ejs with name blogs j rakhda pani hunxa name
 };
 
 const renderSinglePost = async (req, res) => {
