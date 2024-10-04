@@ -1,3 +1,4 @@
+import { where } from "sequelize";
 import db from "../../model/index.js";
 import fs from "fs";
 const renderCreateBlog = (req, res) => {
@@ -46,11 +47,19 @@ const renderSinglePost = async (req, res) => {
 
 const deleteBlog = async (req, res) => {
   let id = req.params.id;
-
+  const data = await db.blogs.findAll({ where: { id: id } });
+  const oldImagePath = data[0].image.slice(22);
   await db.blogs.destroy({
     where: {
       id: id,
     },
+  });
+  fs.unlink(`uploads/${oldImagePath}`, (error) => {
+    if (error) {
+      console.log("error happen :", error);
+    } else {
+      console.log("file deleted");
+    }
   });
 
   res.redirect("/");
