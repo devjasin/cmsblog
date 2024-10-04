@@ -94,3 +94,9 @@ a{
     background-color: #575757;
     border-radius: 5px;
 }
+
+
+img{
+    width: auto;
+    height: 200px;
+}

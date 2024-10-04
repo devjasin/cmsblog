@@ -95,7 +95,12 @@ body {
   text-decoration: none;
   color: rgb(197, 15, 15);
 }
+img{
+width: 250px;
+height: 250px;
 
+
+}
 /* Responsive for smaller screens */
 @media screen and (max-width: 768px) {
     .navbar ul {

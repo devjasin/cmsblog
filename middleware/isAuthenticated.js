@@ -28,7 +28,7 @@ export default isAuthenticated;
 
 /* here promisify handle (error,decode section),with out this it look like 
 
-jwt.verify(token,process.env.secretkey,(error,decode)=>{
+(jwt.verify)(token,process.env.secretkey,(error,decode)=>{
 if(error){
 res.send("error occured")
 }else{

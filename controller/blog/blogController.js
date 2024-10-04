@@ -8,11 +8,16 @@ const createBlog = async (req, res) => {
   console.log(req.user[0].id, "userId from createBlog"); //req.user.id isAuthentication bata pathayeko huxna
   const userId = req.user[0].id;
   const { title, subtitle, description } = req.body;
+  const fileName = req.file.filename;
+  if (!title || !subtitle || !description || !fileName) {
+    return res.send("you must be filled all data");
+  }
   await db.blogs.create({
     title: title,
     subTitle: subtitle,
     description: description,
     userId: userId,
+    image: process.env.PROJECT_URI + fileName,
   });
   res.redirect("/");
 };
