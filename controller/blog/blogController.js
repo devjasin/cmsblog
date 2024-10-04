@@ -46,6 +46,7 @@ const renderSinglePost = async (req, res) => {
 
 const deleteBlog = async (req, res) => {
   let id = req.params.id;
+
   await db.blogs.destroy({
     where: {
       id: id,

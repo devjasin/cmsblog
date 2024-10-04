@@ -15,6 +15,7 @@ import {
   renderSinglePost,
 } from "../controller/blog/blogController.js";
 import isAuthenticated from "../middleware/isAuthenticated.js";
+import logout from "../controller/blog/logout.js";
 
 const firstrouter = Router();
 //display all blog in page
@@ -23,8 +24,9 @@ firstrouter.route("/").get(renderAllBlogs);
 const upload = multer({ storage: storage });
 firstrouter
   .route("/createblog")
-  .get(renderCreateBlog)
+  .get(isAuthenticated, renderCreateBlog)
   .post(isAuthenticated, upload.single("image"), createBlog);
+
 //upload.single('image') is for multer middleware
 //find and display
 firstrouter.route("/singlePost/:id").get(renderSinglePost);
@@ -34,5 +36,6 @@ firstrouter.route("/delete/:id").post(isAuthenticated, deleteBlog);
 firstrouter.route("/edit/:id").post(isAuthenticated, renderEditBlog);
 firstrouter.route("/editBlog1/:id").post(isAuthenticated, editBlog);
 firstrouter.route("/myblogs").get(isAuthenticated, Myblog);
+firstrouter.route("/logout").get(isAuthenticated, logout);
 
 export default firstrouter;

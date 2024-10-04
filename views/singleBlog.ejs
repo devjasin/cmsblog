@@ -24,13 +24,20 @@
               </div>
         <a href="/" class="back-link">← Back to Posts</a>
         
-        <form action="/delete/<%- sdata[0].id %>" method="POST" style="display:inline;">
+        
+
+
+        <% if(currentUser){ %>
+          <form action="/delete/<%- sdata[0].id %>" method="POST" style="display:inline;">
             <button type="submit">Delete</button>
           </form>
           
          <form action="/edit/<%-sdata[0].id %>" method="post" style="display: inline;">
         <button>UPDATE</button>  
         </form>
+
+       <% } %>
+
 
           
 
