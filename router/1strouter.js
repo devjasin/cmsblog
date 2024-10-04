@@ -16,6 +16,7 @@ import {
 } from "../controller/blog/blogController.js";
 import isAuthenticated from "../middleware/isAuthenticated.js";
 import logout from "../controller/blog/logout.js";
+import isValidUser from "../middleware/isValidUser.js";
 
 const firstrouter = Router();
 //display all blog in page
@@ -31,9 +32,11 @@ firstrouter
 //find and display
 firstrouter.route("/singlePost/:id").get(renderSinglePost);
 //delete page
-firstrouter.route("/delete/:id").post(isAuthenticated, deleteBlog);
+firstrouter.route("/delete/:id").post(isAuthenticated, isValidUser, deleteBlog);
 //EDIT
-firstrouter.route("/edit/:id").post(isAuthenticated, renderEditBlog);
+firstrouter
+  .route("/edit/:id")
+  .post(isAuthenticated, isValidUser, renderEditBlog);
 firstrouter
   .route("/editBlog1/:id")
   .post(isAuthenticated, upload.single("image"), editBlog);
