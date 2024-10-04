@@ -19,12 +19,15 @@
             <p>Fill in the title, subtitle, and description to add a new post to the CMS.</p>
         </div>
 
-        <form action="/editBlog1/<%-data[0].id%>" method="post">
+        <form action="/editBlog1/<%-data[0].id%>" method="post" enctype="multipart/form-data">
             <label for="title">Title</label>
             <input type="text" id="title" name="title" value="<%-data[0].title%>" required>
 
             <label for="subtitle">Subtitle</label>
             <input type="text" id="subtitle" name="subtitle" value="<%-data[0].subTitle%>" required>
+            
+            <label for="image">image</label>
+            <input type="file" id="image" name="image" value="<%-data[0].image%>">
 
             <label for="description">Description</label>
             <textarea id="description" name="description" rows="4" required><%-data[0].description%>

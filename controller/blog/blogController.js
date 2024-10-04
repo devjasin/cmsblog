@@ -1,5 +1,5 @@
 import db from "../../model/index.js";
-
+import fs from "fs";
 const renderCreateBlog = (req, res) => {
   res.render("createBlog");
 };
@@ -52,6 +52,7 @@ const deleteBlog = async (req, res) => {
       id: id,
     },
   });
+
   res.redirect("/");
 };
 
@@ -66,11 +67,29 @@ const renderEditBlog = async (req, res) => {
 const editBlog = async (req, res) => {
   let id = req.params.id;
   const { title, subtitle, description } = req.body;
+  const oldDatas = await db.blogs.findAll({ where: { id: id } });
+  let fileUrl;
+  if (req.file) {
+    const fileName = req.file.filename;
+    fileUrl = process.env.PROJECT_URI + fileName;
+    const oldImagePath = oldDatas[0].image.slice(22);
+    //for delete old image ↓↓↓↓↓→←
+    fs.unlink(`uploads/${oldImagePath}`, (error) => {
+      if (error) {
+        console.log("error happen :", error);
+      } else {
+        console.log("file deleted");
+      }
+    });
+  } else {
+    fileUrl = oldDatas[0].image;
+  }
   await db.blogs.update(
     {
       title: title,
       subTitle: subtitle,
       description: description,
+      image: fileUrl,
     },
     {
       where: {
@@ -78,6 +97,7 @@ const editBlog = async (req, res) => {
       },
     }
   );
+
   res.redirect("/singlePost/" + id);
 };
 

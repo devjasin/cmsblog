@@ -34,7 +34,9 @@ firstrouter.route("/singlePost/:id").get(renderSinglePost);
 firstrouter.route("/delete/:id").post(isAuthenticated, deleteBlog);
 //EDIT
 firstrouter.route("/edit/:id").post(isAuthenticated, renderEditBlog);
-firstrouter.route("/editBlog1/:id").post(isAuthenticated, editBlog);
+firstrouter
+  .route("/editBlog1/:id")
+  .post(isAuthenticated, upload.single("image"), editBlog);
 firstrouter.route("/myblogs").get(isAuthenticated, Myblog);
 firstrouter.route("/logout").get(isAuthenticated, logout);
 
