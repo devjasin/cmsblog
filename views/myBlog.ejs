@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navbar and Cards</title>
-  <link rel="stylesheet" href="/css/blog.css">
+  <link rel="stylesheet" href="/css/myblog.css">
 </head>
 <body>
 
     <!-- Navbar -->
       <%-include("./components/navbar.ejs")%>
       <h1>MyBlogs</h1>
-      <div class="card-container"></div>
+      <div class="card-container">
         <% blogs.length > 0 && blogs.map((data)=>{ %>
             <div class="card">
                 <div class="card-header">
@@ -25,6 +25,7 @@
                 </div>
             </div> 
        <% }) %>
+    </div>
    
 </body>
 </html>
