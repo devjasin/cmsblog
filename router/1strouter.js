@@ -14,7 +14,7 @@ import {
   renderEditBlog,
   renderSinglePost,
 } from "../controller/blog/blogController.js";
-import isAuthenticated from "../middleware/isAuthenticated.js";
+import { isAuthenticated } from "../middleware/isAuthenticated.js";
 import logout from "../controller/blog/logout.js";
 import isValidUser from "../middleware/isValidUser.js";
 

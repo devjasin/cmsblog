@@ -12,6 +12,14 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    otp: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    otpgenerateTime: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   });
   return User;
 };

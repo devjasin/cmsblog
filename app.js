@@ -5,7 +5,8 @@ import register from "./router/registerRoute.js";
 import { config } from "dotenv";
 import loginRouter from "./router/login.js";
 import cookieParser from "cookie-parser";
-import Forgotpassword from "./router/forgotpassword.js";
+import { Forgotpassword } from "./router/forgotpassword.js";
+import decodeToken from "./services/decodeToken.js";
 
 const app = express();
 config();
@@ -15,8 +16,16 @@ app.use(express.static("uploads"));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use((req, res, next) => {
+app.use(async (req, res, next) => {
+  const token = req.cookies.token;
+  if (token) {
+    const decoded = await decodeToken(token, process.env.SECRETKEY);
+    if (decoded && decoded.id) {
+      res.locals.currentUserId = decoded.id;
+    }
+  }
   res.locals.currentUser = req.cookies.token;
+
   next();
 });
 app.use("/", firstrouter);

@@ -24,7 +24,7 @@
               </div>
         <a href="/" class="back-link">← Back to Posts</a>
         
-        <% if(currentUser){ %>
+        <% if(currentUser && currentUserId==sdata[0].user.id){ %>
           <form action="/delete/<%- sdata[0].id %>" method="POST" style="display:inline;">
             <button type="submit">Delete</button>
           </form>
