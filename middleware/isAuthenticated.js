@@ -20,6 +20,7 @@ const isAuthenticated = async (req, res, next) => {
     res.send("user doesnot exit");
   } else {
     req.user = userExist;
+    req.userId = userExist[0].id;
     next();
   }
 };

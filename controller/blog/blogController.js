@@ -6,7 +6,7 @@ const renderCreateBlog = (req, res) => {
 };
 
 const createBlog = async (req, res) => {
-  console.log(req.user[0].id, "userId from createBlog"); //req.user.id isAuthentication bata pathayeko huxna
+  //req.user.id isAuthentication bata pathayeko huxna
   const userId = req.user[0].id;
   const { title, subtitle, description } = req.body;
   const fileName = req.file.filename;

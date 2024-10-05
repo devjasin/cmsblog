@@ -5,6 +5,7 @@ import register from "./router/registerRoute.js";
 import { config } from "dotenv";
 import loginRouter from "./router/login.js";
 import cookieParser from "cookie-parser";
+import Forgotpassword from "./router/forgotpassword.js";
 
 const app = express();
 config();
@@ -21,6 +22,7 @@ app.use((req, res, next) => {
 app.use("/", firstrouter);
 app.use("/register", register);
 app.use("/login", loginRouter);
+app.use("/forgotpassword", Forgotpassword);
 
 app.listen(process.env.PORT, () => {
   console.log(`server is running good at ${process.env.PORT} `);
