@@ -7,7 +7,8 @@ config();
 
 const loginRouter = Router();
 loginRouter.route("/").get((req, res, next) => {
-  res.render("login");
+  const error = req.flash("error");
+  res.render("login", { error });
 });
 
 loginRouter.route("/").post(async (req, res, next) => {
@@ -29,10 +30,13 @@ loginRouter.route("/").post(async (req, res, next) => {
         // res.send("login successful");
         res.redirect("/");
       } else {
-        res.send("invalid email or password");
+        req.flash("error", "invalidPassword and Email");
+        res.redirect("/login");
+        // res.send("invalid email or password");
       }
     } else {
-      res.send("invalid email or password");
+      req.flash("error", "invalidPassword and Email");
+      res.redirect("/login");
     }
   }
 });

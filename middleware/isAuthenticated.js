@@ -4,6 +4,7 @@ import db from "../model/index.js";
 import decodeToken from "../services/decodeToken.js";
 import bcrypt from "bcryptjs/dist/bcrypt.js";
 import sendEmail from "../services/sendEmail.js";
+import { NOTFOUND } from "dns";
 
 const isAuthenticated = async (req, res, next) => {
   const token = req.cookies.token;
@@ -36,7 +37,9 @@ const forgotPasswordForm = async (req, res) => {
       },
     });
     if (emailExists.length === 0) {
-      res.send("user with that email doesnot exist");
+      // res.send("user with that email doesnot exist");
+      req.flash("notfound", "This Email Id Dose Not Belong With Any User");
+      res.redirect("/forgotpassword");
     } else {
       //send opt on that email
       const generateOtp = Math.floor(1000 + Math.random() * 9000);
@@ -55,11 +58,13 @@ const forgotPasswordForm = async (req, res) => {
   }
 };
 const ForgotpasswordGet = (req, res) => {
-  res.render("forgotpassword");
+  const notfound = req.flash("notfound");
+  res.render("forgotpassword", { notfound });
 };
 const verifyOtpGet = (req, res) => {
   const email = req.query.email;
-  res.render("verifyOTP", { email });
+  const iotp = req.flash("iotp");
+  res.render("verifyOTP", { email, iotp });
 };
 const verifyOtpPost = async (req, res) => {
   const { otp } = req.body;
@@ -88,7 +93,8 @@ const verifyOtpPost = async (req, res) => {
     }
     //1second=12000 milisecond
   } else {
-    res.status(400).json({ message: " Invalid otp" });
+    req.flash("iotp", "invalid otp");
+    res.redirect(`/forgotpassword/otp?email=${email}`);
   }
 };
 const forGetPasswordGet = (req, res) => {

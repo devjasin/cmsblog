@@ -7,10 +7,21 @@ import loginRouter from "./router/login.js";
 import cookieParser from "cookie-parser";
 import { Forgotpassword } from "./router/forgotpassword.js";
 import decodeToken from "./services/decodeToken.js";
+import session from "express-session";
+import flash from "connect-flash/lib/flash.js";
 
 const app = express();
 config();
 app.set("view engine", "ejs");
+app.use(
+  session({
+    secret: "thisissecretkey",
+    resave: false, //if nothing has change it does not save it self
+    saveUninitialized: false,
+  })
+);
+
+app.use(flash());
 app.use(express.static("public"));
 app.use(express.static("uploads"));
 app.use(cookieParser());
